@@ -8,10 +8,10 @@ import { Sidebar } from "~/features/sidebar";
 import cn from "classnames";
 import { useCallback, useState } from "react";
 export default function AppLayout({}) {
-  const { activeSidebar } = useAppContext();
+  const { isCompactSidebar } = useAppContext();
   return (
     <div
-      className={cn(styles.app_layout, activeSidebar && styles.layout_active)}
+      className={cn(styles.app_layout, isCompactSidebar && styles.layout_active)}
     >
       <div className={styles.navbar}>
         <Navbar />

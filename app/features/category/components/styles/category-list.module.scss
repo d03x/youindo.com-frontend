@@ -1,0 +1,57 @@
+.category_container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.category_list {
+  padding-top: 0.5rem;
+  overflow-x: auto;
+  scrollbar-width: none; /* Untuk Firefox */
+  -ms-overflow-style: none; /* Untuk IE dan Edge */
+
+  &::-webkit-scrollbar {
+    display: none; /* Untuk Chrome, Safari, dan Opera */
+  }
+
+  .category_lists {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1rem; // Ruang untuk scroll
+    width: max-content; // Memastikan konten tidak wrap
+
+    &__item {
+      color: #4d4d4d;
+      font-weight: 600;
+      margin: 0 0.5rem;
+      border-radius: 0.4rem;
+      white-space: nowrap;
+      padding: 0.4em 1.4rem;
+      background-color: #f2f2f2;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      flex-shrink: 0; // Mencegah item menyusut
+
+      &:hover {
+        background-color: #e5e5e5;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+      &_active {
+        font-weight: 800;
+        color: white;
+        background-color: var(--app-primary-color);
+        &:hover {
+          background-color: var(--app-primary-color);
+          color: white;
+        }
+      }
+    }
+  }
+}

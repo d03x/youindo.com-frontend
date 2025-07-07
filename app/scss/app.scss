@@ -2,8 +2,10 @@ $navbar-height:50px;
 $navbar-background-color:#f8f9fa;
 $navbar-text-color:#343a40;
 $sidebar-width:250px;
+$app-primary-color:#0097b2;
 $search-box-width:1fr;
 :root{
+    --app-primary-color:#{$app-primary-color};
     --search-box-width:#{$search-box-width};
     --sidebar-width: #{$sidebar-width};
     --navbar-height: #{$navbar-height};

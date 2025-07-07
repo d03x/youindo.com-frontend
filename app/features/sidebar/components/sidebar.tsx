@@ -16,6 +16,8 @@ import {
   Person24Regular,
   PersonAdd20Regular,
   Play24Regular,
+  Video16Regular,
+  Video24Color,
   Video24Regular,
 } from "@fluentui/react-icons";
 import { MenuItem } from "./menu-item";
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
 
 const Sidebar = () => {
   const styles = useStyles();
-  const {activeSidebar} = useAppContext()
+  const { isCompactSidebar } = useAppContext();
   const mainMenuItems = [
     { href: "/", icon: <Home24Regular />, label: "Beranda" },
     {
@@ -55,6 +57,8 @@ const Sidebar = () => {
       label: "Reels",
       subText: "WKWKW",
     },
+    { href: "/series", icon: <Video24Color />, label: "Series" },
+
     { href: "/live", icon: <Live24Regular />, label: "Live" },
     { href: "/trending", icon: <Fire24Regular />, label: "Trending" },
   ];
@@ -80,41 +84,26 @@ const Sidebar = () => {
     <nav
       className={classNames(
         layout.sidebar,
-        activeSidebar && layout.sidebar_active
+        isCompactSidebar && layout.sidebar_active
       )}
       aria-label="Main navigation"
     >
-      <div className="mb-4">
-        <MenuList>
-          {mainMenuItems.map((item) => (
-            <MenuItem
-              style={{
-                flexDirection: "column",
-              }}
-              key={item.href}
-              href={item.href}
-              icon={item.icon}
-              subText={item.subText}
-            >
-              <AnimatePresence>
-                {!activeSidebar && (
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    key="box"
-                  >
-                    {item.label}
-                  </motion.span>
-                )}
-              </AnimatePresence>
-            </MenuItem>
-          ))}
-        </MenuList>
+      <div className="flex flex-col">
+        {mainMenuItems.map((item) => (
+          <MenuItem
+            style={{
+              flexDirection: "column",
+            }}
+            title={item.label}
+            key={item.href}
+            href={item.href}
+            icon={item.icon}
+            badge={item.label == "Beranda" ? 10 : null}
+          />
+        ))}
 
         <AnimatePresence initial={false}>
-          {!activeSidebar && (
+          {!isCompactSidebar && (
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -126,17 +115,12 @@ const Sidebar = () => {
 
               <MenuList>
                 {secondaryMenuItems.map((item) => (
-                  <MenuItem key={item.href} href={item.href} icon={item.icon}>
-                    {!activeSidebar && item.label}
-                  </MenuItem>
-                ))}
-              </MenuList>
-
-              <MenuList>
-                {secondaryMenuItems.map((item) => (
-                  <MenuItem key={item.href} href={item.href} icon={item.icon}>
-                    {!activeSidebar && item.label}
-                  </MenuItem>
+                  <MenuItem
+                    title={item.label}
+                    key={item.href}
+                    href={item.href}
+                    icon={item.icon}
+                  />
                 ))}
               </MenuList>
             </motion.div>

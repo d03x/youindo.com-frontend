@@ -5,7 +5,8 @@
   grid-template-rows: auto 1fr; /* First row for navbar, second row for content */
   grid-template-columns: var(--sidebar-width) 1fr; /* Sidebar width and main content */
   &.layout_active {
-    grid-template-columns: 70px 1fr; /* Sidebar width and main content */
+    padding-inline: 0.2rem;
+    grid-template-columns: 80px 1fr; /* Sidebar width and main content */
   }
   .navbar {
     position: sticky;
@@ -15,7 +16,6 @@
   }
 
   .aside {
-    padding: 0 1em;
     position: sticky;
     top: var(--navbar-height);
     max-height: calc(100vh - var(--navbar-height));

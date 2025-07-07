@@ -19,7 +19,7 @@ export const Navbar = () => {
       <div className={styles.navbar__left}>
         <Button
           icon={<Hamburger />}
-          onClick={ctx.navToggleHandler}
+          onClick={ctx.toggleCompactSidebar}
           appearance="transparent"
         />
         <AppLogo />

@@ -1,25 +1,25 @@
 import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext<{
-  activeSidebar: boolean;
-  navToggleHandler: () => void;
+  isCompactSidebar: boolean;
+  toggleCompactSidebar: () => void;
 }>({
-  activeSidebar: true,
-  navToggleHandler() {},
+  isCompactSidebar: true,
+  toggleCompactSidebar() {},
 });
 export default function AppContextProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [activeSidebar, setActiveSidebar] = useState<boolean>(true);
+  const [isCompactSidebar, setCompactSidebar] = useState<boolean>(false);
 
-  function navToggleHandler() {
-    setActiveSidebar(!activeSidebar);
+  function toggleCompactSidebar() {
+    setCompactSidebar(!isCompactSidebar);
   }
 
   return (
-    <AppContext.Provider value={{ activeSidebar, navToggleHandler }}>
+    <AppContext.Provider value={{ isCompactSidebar, toggleCompactSidebar }}>
       {children}
     </AppContext.Provider>
   );

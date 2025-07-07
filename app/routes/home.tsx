@@ -44,7 +44,7 @@ export default function Home() {
       <CategoryList />
 
       <div className="grid gap-y-6 gap-x-3 grid-cols-3">
-        {[1, 2, 3, 4].map(() => (
+        {Array.from({length:20}).map(() => (
           <VideoItem />
         ))}
       </div>

@@ -1,8 +1,9 @@
 import { Link } from "react-router";
 import styles from "./styles/video-item.module.scss";
 import { Badge, Button } from "@fluentui/react-components";
-import { Dot } from "lucide-react";
+import { Dot, Radio } from "lucide-react";
 import {
+  Live20Filled,
   MoreVertical24Filled,
   Play16Filled,
   Play20Filled,
@@ -17,7 +18,10 @@ const VideoItem = () => {
         </div>
         <div className={styles.thumbnail__info}>
           <div className="">
-            <Badge color="danger">Live</Badge>
+            <Badge appearance="outline" color="danger">
+              <Live20Filled />
+              Live
+            </Badge>
           </div>
           <div className="">
             <Badge shape="rounded" color="subtle">
@@ -34,10 +38,12 @@ const VideoItem = () => {
         </h2>
         <div className={styles.video_item__footer}>
           <div className={styles.channel_info}>
-            <img
-              src="https://yt3.ggpht.com/gB9L0xSZjS8mRO3tpV5BvaVKgStbQCKQl97dqnUcvdEB7NQYbLMxN2RMocqZepv-VBsjFSnU=s68-c-k-c0x00ffffff-no-rj"
-              alt=""
-            />
+            <div className={styles.channel_info__avatar}>
+              <img
+                src="https://yt3.ggpht.com/gB9L0xSZjS8mRO3tpV5BvaVKgStbQCKQl97dqnUcvdEB7NQYbLMxN2RMocqZepv-VBsjFSnU=s68-c-k-c0x00ffffff-no-rj"
+                alt=""
+              />
+            </div>
             <div className={styles.channel_info__right}>
               <ul>
                 <li className={styles.channel_info__channel_name}>

@@ -24,6 +24,7 @@ import { AnimatePresence, motion } from "motion/react";
 import classNames from "classnames";
 import { memo } from "react";
 import SidebarFooter from "./sidebar-footer";
+import { useAppContext } from "~/contexts/app-context-provider";
 
 const useStyles = makeStyles({
   footerLink: {
@@ -43,9 +44,9 @@ const useStyles = makeStyles({
   },
 });
 
-const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
+const Sidebar = () => {
   const styles = useStyles();
-
+  const {activeSidebar} = useAppContext()
   const mainMenuItems = [
     { href: "/", icon: <Home24Regular />, label: "Beranda" },
     {
@@ -79,7 +80,7 @@ const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
     <nav
       className={classNames(
         layout.sidebar,
-        isActiveLayout && layout.sidebar_active
+        activeSidebar && layout.sidebar_active
       )}
       aria-label="Main navigation"
     >
@@ -96,7 +97,7 @@ const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
               subText={item.subText}
             >
               <AnimatePresence>
-                {!isActiveLayout && (
+                {!activeSidebar && (
                   <motion.span
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -113,7 +114,7 @@ const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
         </MenuList>
 
         <AnimatePresence initial={false}>
-          {!isActiveLayout && (
+          {!activeSidebar && (
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -126,7 +127,7 @@ const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
               <MenuList>
                 {secondaryMenuItems.map((item) => (
                   <MenuItem key={item.href} href={item.href} icon={item.icon}>
-                    {!isActiveLayout && item.label}
+                    {!activeSidebar && item.label}
                   </MenuItem>
                 ))}
               </MenuList>
@@ -134,7 +135,7 @@ const Sidebar = ({ isActiveLayout }: { isActiveLayout: boolean }) => {
               <MenuList>
                 {secondaryMenuItems.map((item) => (
                   <MenuItem key={item.href} href={item.href} icon={item.icon}>
-                    {!isActiveLayout && item.label}
+                    {!activeSidebar && item.label}
                   </MenuItem>
                 ))}
               </MenuList>

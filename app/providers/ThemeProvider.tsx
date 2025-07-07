@@ -6,6 +6,7 @@ import {
 } from "@fluentui/react-components";
 import { Suspense } from "react";
 import { Outlet } from "react-router";
+import AppContextProvider from "~/contexts/app-context-provider";
 
 export default function ThemeProvider({
   children,
@@ -14,9 +15,11 @@ export default function ThemeProvider({
 }) {
   return (
     <FluentProvider theme={webLightTheme} applyStylesToPortals>
-      <Suspense fallback={<ProgressBar/>}>
+      <AppContextProvider>
+        <Suspense fallback={<ProgressBar/>}>
         <Outlet />
       </Suspense>
+      </AppContextProvider>
     </FluentProvider>
   );
 }

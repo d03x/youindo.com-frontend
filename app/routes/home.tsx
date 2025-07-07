@@ -20,6 +20,7 @@ import {
   MoreHorizontal24Filled,
 } from "@fluentui/react-icons";
 import CategoryList from "~/features/category/components/category-list";
+import { VideoItem } from "~/features/video";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -40,7 +41,13 @@ const category = [
 export default function Home() {
   return (
     <div className="py-3">
-      <CategoryList/>
+      <CategoryList />
+
+      <div className="grid gap-y-6 gap-x-3 grid-cols-3">
+        {[1, 2, 3, 4].map(() => (
+          <VideoItem />
+        ))}
+      </div>
     </div>
   );
 }

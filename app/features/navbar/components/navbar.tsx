@@ -11,11 +11,17 @@ import {
   WeatherMoon28Regular,
 } from "@fluentui/react-icons";
 import { BellPlus, UploadCloud } from "lucide-react";
-export const Navbar = ({ hamburgerOnTap }: { hamburgerOnTap: () => void }) => {
+import { useAppContext } from "~/contexts/app-context-provider";
+export const Navbar = () => {
+  const ctx = useAppContext();
   return (
     <nav className={styles.navbar}>
       <div className={styles.navbar__left}>
-        <Button icon={<Hamburger />} onClick={hamburgerOnTap} appearance="transparent" />
+        <Button
+          icon={<Hamburger />}
+          onClick={ctx.navToggleHandler}
+          appearance="transparent"
+        />
         <AppLogo />
       </div>
       <div className={styles.navbar__center}>

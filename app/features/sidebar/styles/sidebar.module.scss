@@ -1,0 +1,58 @@
+.sidebar {
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  /* Custom scrollbar */
+  &:hover {
+    overflow-y: auto; /* Show scrollbar on hover */
+  }
+
+  /* Scroll behavior */
+  overflow-y: scroll; /* Selalu memungkinkan scroll */
+  scrollbar-width: thin; /* Untuk Firefox */
+  scrollbar-color: transparent transparent; /* Scrollbar transparan secara default */
+
+  /* Hide scrollbar track */
+  &::-webkit-scrollbar {
+    transition: all 0.5s;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+
+  /* Hide scrollbar thumb */
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 10px;
+  }
+
+  /* Show scrollbar on hover */
+  &:hover {
+    scrollbar-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.03); /* Firefox */
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: rgba(0, 0, 0, 0.03);
+      margin: 4px 0;
+    }
+  }
+
+  &.sidebar_active {
+    footer{
+      display: none;
+    }
+    &:hover {
+      scrollbar-color: transparent transparent; /* Scrollbar transparan secara default */
+    }
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  /* Rest of your styles... */
+}

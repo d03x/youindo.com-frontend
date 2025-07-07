@@ -1,0 +1,18 @@
+$heightnavbar: 50px;
+.appLayout {
+}
+
+.search_box {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin-inline: 7rem;
+ 
+}
+
+
+.main {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: calc(100vh - #{$heightnavbar});
+}

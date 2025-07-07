@@ -1,0 +1,12 @@
+$navbar-height:50px;
+$navbar-background-color:#f8f9fa;
+$navbar-text-color:#343a40;
+$sidebar-width:250px;
+$search-box-width:1fr;
+:root{
+    --search-box-width:#{$search-box-width};
+    --sidebar-width: #{$sidebar-width};
+    --navbar-height: #{$navbar-height};
+    --navbar-background-color: #{$navbar-background-color};
+    --navbar-text-color: #{$navbar-text-color};
+}

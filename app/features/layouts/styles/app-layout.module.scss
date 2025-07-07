@@ -1,0 +1,31 @@
+.app_layout {
+  min-height: 100vh;
+  display: grid;
+  transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  grid-template-rows: auto 1fr; /* First row for navbar, second row for content */
+  grid-template-columns: var(--sidebar-width) 1fr; /* Sidebar width and main content */
+  &.layout_active {
+    grid-template-columns: 70px 1fr; /* Sidebar width and main content */
+  }
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 111;
+    grid-column: 1 / -1; /* Span across all columns */
+  }
+
+  .aside {
+    padding: 0 1em;
+    position: sticky;
+    top: var(--navbar-height);
+    max-height: calc(100vh - var(--navbar-height));
+    grid-row: 2; /* Place in second row */
+    grid-column: 1; /* First column */
+  }
+
+  .body {
+    min-height: calc(100vh - var(--navbar-height));
+    grid-row: 2; /* Place in second row */
+    grid-column: 2; /* Second column */
+  }
+}
